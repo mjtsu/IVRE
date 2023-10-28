@@ -1,0 +1,148 @@
+body {
+    padding: 0;
+    margin: 0;
+    margin: 0 auto;
+}
+
+.form_middle {
+    line-height: 40px;
+    text-align: center;
+}
+
+.form_right {
+    line-height: 40px;
+    text-align: right;
+}
+
+h1 {
+    text-align: center;
+    margin: 1%;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: left;
+    margin: 1%;
+}
+
+h4 {
+    text-align: left;
+}
+
+h5 {
+    text-align: center;
+    margin: 1%;
+}
+
+h6 {
+    text-align: left;
+}
+
+/* box */
+.box {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.box .left {
+    width: 53%;
+    height: 25%;
+    padding: 1%;
+    float: left;
+}
+
+.box .left .up {
+    width: 40%;
+    height: 30%;
+    padding: 3%;
+}
+
+.box .left .down {
+    width: 40%;
+    height: 30%;
+    padding: 3%;
+}
+
+.box .right {
+    width: 42%;
+    height: 25%;
+    padding: 1%;
+    float: left;
+}
+
+.box .right .left {
+    padding: 1%;
+    width: 30%;
+    height: 100%;
+    float: left;
+    background-color: #a1ccdb;
+}
+
+.box .right .middle {
+    padding: 1%;
+    height: 100%;
+    margin-left: 36%;
+    margin-right: 32%;
+    background-color: rgb(249, 183, 183);
+}
+
+.box .right .right {
+    padding: 1%;
+    height: 20%;
+    vertical-align: bottom;
+    width: 30%;
+    float: right;
+    background-color: rgb(249, 183, 183);
+}
+
+/* belief */
+.belief {
+    margin: 0 auto;
+    overflow: hidden;
+    height: 15%;
+}
+
+.belief .a {
+    padding: 1%;
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+/* choose */
+.choose {
+    margin: 0 auto;
+    overflow: hidden;
+    height: 5%;
+}
+
+.choose .a {
+    padding: 1%;
+    width: 10%;
+    height: 100%;
+    float: left;
+}
+
+#curr_panel {
+    height: 100%;
+    width: 100%;
+}
+
+#his_panel {
+    width: 100%;
+    padding: 1%;
+}
+
+#his_panel_right {
+    width: 45%;
+    padding: 1%;
+    vertical-align: bottom;
+    float: left;
+}
+
+#obj_panel {
+    width: 100%;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title> IVRE </title>
+    <link rel="stylesheet" href="./static/format.css">
+</head>
+
+<body>
+    <h1> IVRE Gamepage</h1>
+    <form class="form_right" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.new() }}
+        {{ form.exit() }}
+    </form>
+    <!-- <h2>Evaluate Scientific Thinking in Artificial Agents</h2>  -->
+    <div class="box">
+        <div class="left">
+            <b>
+                <div style="float:left;font-size:20px;margin:1%;" id="panel">Current Panel: </div>
+            </b>
+            <b>
+                <div style="float:right;font-size:20px;margin:1%;" id="reward">Reward/Total Reward: </div>
+            </b>
+            <div id="curr"></div>
+            <!-- <img id="curr_panel" src="../static/test.png"><br /> -->
+        </div>
+        <div class="right">
+            <h3>his panel</h3>
+            <div class="left">
+                <h5>Context Panel</h5>
+                <div id="0"></div>
+                <div id="1"></div>
+                <div id="2"></div>
+                <div id="3"></div>
+            </div>
+            <div class="right">
+                <h5>Trial Panel</h5>
+                <div id="7"></div>
+                <div id="8"></div>
+                <div id="9"></div>
+            </div>
+            <div class="middle">
+                <h5>Trial Panel</h5>
+                <div id="4"></div>
+                <div id="5"></div>
+                <div id="6"></div>
+            </div>
+        </div>
+    </div>
+    <div id='bt'></div>
+    <div class="belief">
+        <div class="a">
+            <!-- <img id="obj_panel" src="../static/tmp_101.png"> -->
+            <div id="obj_0"></div>
+        </div>
+        <div class="a">
+            <div id="obj_1"></div>
+        </div>
+        <div class="a">
+            <div id="obj_2"></div>
+        </div>
+        <div class="a">
+            <div id="obj_3"></div>
+        </div>
+        <div class="a">
+            <div id="obj_4"></div>
+        </div>
+        <div class="a">
+            <div id="obj_5"></div>
+        </div>
+        <div class="a">
+            <div id="obj_6"></div>
+        </div>
+        <div class="a">
+            <div id="obj_7"></div>
+        </div>
+        <div class="a">
+            <div id="obj_8"></div>
+        </div>
+    </div>
+    <div class="choose">
+        <form method="POST">
+            <div class="a">
+                <input type="checkbox" value='0' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='1' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='2' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='3' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='4' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='5' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='6' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='7' name="bt">
+            </div>
+            <div class="a">
+                <input type="checkbox" value='8' name="bt">
+            </div>
+    </div>
+
+    <form class="form_middle" method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.submit() }}
+    </form>
+
+    <div id="flagid" d="{{flag}}" style="display:none"></div>
+    <div id="numid" d="{{num}}" style="display:none"></div>
+    <div id="rewardid" d="{{reward}}" style="display:none"></div>
+    <div id="trewardid" d="{{total_reward}}" style="display:none"></div>
+    <div id="pid" d="{{pid}}" style="display:none"></div>
+    <script>
+        flag = document.getElementById('flagid').getAttribute('d');
+        num = document.getElementById('numid').getAttribute('d');
+        reward = document.getElementById('rewardid').getAttribute('d');
+        total_reward = document.getElementById('trewardid').getAttribute('d');
+        pid = document.getElementById("pid").getAttribute('d');
+        function set_bt_title() {
+            bt = document.getElementById('bt');
+            if (flag == "belief") {
+                bt.innerHTML = "<h3>Your current belief: </h3>";
+            }
+            else {
+                bt.innerHTML = "<h3>Your trial: </h3>";
+            }
+        };
+
+        function set_pic() {
+            for (var i = 0; i < num; i++) {
+                pic = document.getElementById(i.toString());
+                // pic_curr.innerHTML = "<img id=\"curr_panel\" src=\"../static/tmp_${num}.png\">";
+                pic.innerHTML = '<img id=\"his_panel\" src=\"../static/tmp_' + pid.toString() + '_' + (i + 1).toString() + '.png\">';
+
+            }
+        };
+
+        function set_curr_pic() {
+            pic_curr = document.getElementById("curr");
+            pic_curr.innerHTML = '<img id=\"curr_panel\" src=\"../static/tmp_' + pid.toString() + '_' + (num).toString() + '.png\">';
+            // pic_curr.innerHTML = "<img id=\"curr_panel\" src=\"../static/test.png\">";
+        };
+
+        function set_panel() {
+            log_panel = document.getElementById("panel");
+            log_panel.innerHTML += num.toString();
+            log_panel.innerHTML += "/10";
+        };
+
+        function set_obj() {
+            console.log(pid);
+            for (var i = 0; i < 9; i++) {
+                obj = document.getElementById("obj_" + i.toString());
+                obj.innerHTML = '<img id="obj_panel" src="../static/tmp_' + pid.toString() + '_' + (i + 101).toString() + '.png\">';
+            }
+        };
+
+        function set_reward() {
+            log_reward = document.getElementById("reward");
+            log_reward.innerHTML += reward.toString();
+            log_reward.innerHTML += "/";
+            log_reward.innerHTML += total_reward.toString();;
+        };
+
+        // don't work
+        function set_check() {
+            for (var i = 0; i < 10; i++) {
+                log_panel = document.getElementById("check_" + i.toString());
+                log_panel.innerHTML = "<input type=\"checkbox\" value='0' name=\"belief\">"
+            }
+        };
+
+        set_bt_title();
+        set_curr_pic();
+        set_pic();
+        set_obj();
+        set_panel();
+        set_reward()
+    </script>
+</body>
+
+
+</html>
